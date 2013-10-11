@@ -1,0 +1,25 @@
+{
+	"name": "schilljs/spacegame",
+	"type": "phpbb-extension",
+	"description": "",
+	"homepage": "https://github.com/schilljs/spacegame",
+	"version": "2.0.0",
+	"time": "2013-10-11",
+	"licence": "GPL-2.0",
+	"authors": [
+		{
+			"name": "Joas Schilling",
+			"username": "schilljs",
+			"email": "spacegame@schilljs.com",
+			"homepage": "http://www.schilljs.com",
+			"role": "Lead Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.3",
+		"phpbb/phpbb": "3.1.*@dev"
+	},
+	"extra": {
+		"display-name": "SpaceGame 2.0"
+	}
+}
