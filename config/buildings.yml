@@ -1,0 +1,13 @@
+services:
+    schilljs.spacegame.building_collection:
+        class: phpbb\di\service_collection
+        arguments:
+            - @service_container
+        tags:
+            - { name: service_collection, tag: schilljs.spacegame.building }
+
+     schilljs.spacegame.building.planetary_fortress:
+        class: schilljs\spacegame\building\planetary_fortress
+        scope: prototype
+        tags:
+            - { name: schilljs.spacegame.building }

@@ -1,7 +1,6 @@
-imports:
-    - { resource: tables.yml }
-    - { resource: buildings.yml }
-
+parameters:
+    tables.spacegame.users: %core.table_prefix%space_users
+    tables.spacegame.alliances: %core.table_prefix%space_alliances
 services:
     schilljs.spacegame.controller.statistics:
         class: schilljs\spacegame\controller\statistics
@@ -13,5 +12,5 @@ services:
             - @controller.helper
             - %core.root_path%
             - %core.php_ext%
-            - %tables.spacegame.users%
-            - %tables.spacegame.alliances%
+            - %core.table_prefix%space_users
+            - %core.table_prefix%space_alliances

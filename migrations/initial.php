@@ -107,9 +107,10 @@ class initial extends \phpbb\db\migration\migration
 						'planet_base'		=> array('BOOL', 0),
 						'planet_status'		=> array('UINT:4', 0),
 
-						'titan_stock'		=> array('UINT', 0),
-						'carbon_stock'		=> array('UINT', 0),
-						'lithium_stock'		=> array('UINT', 0),
+						'resource_one'		=> array('UINT', 0),
+						'resource_two'		=> array('UINT', 0),
+						'resource_three'	=> array('UINT', 0),
+						'resource_four'		=> array('UINT', 0),
 
 						'planet_time'		=> array('TIMESTAMP', 0),
 						'last_fill_stocks'	=> array('TIMESTAMP', 0),
@@ -179,17 +180,21 @@ class initial extends \phpbb\db\migration\migration
 					'COLUMNS'		=> array(
 						'user_id'						=> array('UINT', 0),
 
-						'building_titan_points'			=> array('BINT', 0),
-						'building_carbon_points'		=> array('BINT', 0),
-						'building_lithium_points'		=> array('BINT', 0),
 
-						'technology_titan_points'		=> array('BINT', 0),
-						'technology_carbon_points'		=> array('BINT', 0),
-						'technology_lithium_points'		=> array('BINT', 0),
+						'building_resource_one'		=> array('BINT', 0),
+						'building_resource_two'		=> array('BINT', 0),
+						'building_resource_three'	=> array('BINT', 0),
+						'building_resource_four'	=> array('BINT', 0),
 
-						'battle_titan_points'			=> array('BINT', 0),
-						'battle_carbon_points'			=> array('BINT', 0),
-						'battle_lithium_points'			=> array('BINT', 0),
+						'technology_resource_one'		=> array('BINT', 0),
+						'technology_resource_two'		=> array('BINT', 0),
+						'technology_resource_three'		=> array('BINT', 0),
+						'technology_resource_four'		=> array('BINT', 0),
+
+						'battle_resource_one'		=> array('BINT', 0),
+						'battle_resource_two'		=> array('BINT', 0),
+						'battle_resource_three'		=> array('BINT', 0),
+						'battle_resource_four'		=> array('BINT', 0),
 					),
 					'PRIMARY_KEY'		=> 'user_id',
 				),
