@@ -1,0 +1,105 @@
+<!-- INCLUDE overall_header.html -->
+<!-- IF SPACE_GLOBAL_MESSAGE -->
+<div id="space_information" class="rules">
+	<div class="inner"><span class="corners-top"><span></span></span>
+		<strong>{L_INFORMATION}:</strong> {SPACE_GLOBAL_MESSAGE}
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+<!-- ENDIF -->
+
+<!-- DEFINE $TABSTYLE = false -->
+
+<p class="{S_CONTENT_FLOW_END}<!-- IF S_USER_LOGGED_IN --> rightside<!-- ENDIF -->"><!-- IF S_USER_LOGGED_IN -->{LAST_VISIT_DATE}<!-- ELSE -->{CURRENT_TIME}<!-- ENDIF --></p>
+<!-- IF U_MCP --><p>{CURRENT_TIME} <br />[&nbsp;<a href="{U_MCP}">{L_MCP}</a>&nbsp;]</p><!-- ELSEIF S_USER_LOGGED_IN --><p>{CURRENT_TIME}</p><!-- ENDIF -->
+
+<h2>{L_SPACE}</h2>
+
+<!-- IF $TABSTYLE -->
+<div id="tabs">
+	<ul>
+		<!-- BEGIN t_block1 -->
+		<li <!-- IF t_block1.S_SELECTED -->class="activetab"<!-- ENDIF -->><a href="{t_block1.U_TITLE}"><span>{t_block1.L_TITLE}</span></a></li>
+		<!-- END t_block1 -->
+	</ul>
+</div>
+<!-- ENDIF -->
+
+<div class="panel bg3">
+	<div class="inner"><span class="corners-top"><span></span></span>
+
+	<div style="width: 100%;">
+
+	<div id="cp-menu">
+		<br />
+		<div id="navigation">
+<!-- IF $TABSTYLE -->
+			<ul>
+		<!-- BEGIN t_block2 -->
+			<!-- IF t_block2.S_SELECTED -->
+				<li id="active-subsection"><a href="{t_block2.U_TITLE}"><span>{t_block2.L_TITLE}</span></a></li>
+			<!-- ELSE -->
+				<li><a href="{t_block2.U_TITLE}"><span>{t_block2.L_TITLE}</span></a></li>
+			<!-- ENDIF -->
+		<!-- END t_block2 -->
+			</ul>
+<!-- ELSE -->
+			<!-- DEFINE $SKIP = false -->
+			<!-- BEGIN t_block1 -->
+				<!-- IF t_block1.S_FIRST_ROW -->
+					<ul>
+				<!-- ENDIF -->
+				<!-- IF t_block1.S_SELECTED and not t_block1.S_FIRST_ROW -->
+					</ul>
+					<hr/>
+					<ul>
+				<!-- ENDIF -->
+				<!-- IF not $SKIP -->
+					<li<!-- IF t_block1.S_SELECTED --> id="active-subsection"<!-- ENDIF -->><a href="{t_block1.U_TITLE}"><span>{t_block1.L_TITLE}</span></a></li>
+				<!-- ENDIF -->
+				<!-- IF t_block1.S_SELECTED -->
+					<!-- DEFINE $SKIP = true -->
+				<!-- ENDIF -->
+			<!-- END t_block1 -->
+			<!-- BEGIN t_block2 -->
+				<li><a href="{t_block2.U_TITLE}"><span><!-- IF t_block2.S_SELECTED -->&raquo;&nbsp;<!-- ELSE -->&nbsp;&nbsp;&nbsp;&nbsp;<!-- ENDIF -->{t_block2.L_TITLE}</span></a></li>
+			<!-- END t_block2 -->
+			<!-- BEGIN t_block1 -->
+				<!-- IF not $SKIP -->
+					<li><a href="{t_block1.U_TITLE}"><span>{t_block1.L_TITLE}</span></a></li>
+				<!-- ENDIF -->
+				<!-- IF t_block1.S_SELECTED and not t_block1.S_LAST_ROW -->
+					</ul>
+					<hr/>
+					<ul>
+					<!-- DEFINE $SKIP = false -->
+				<!-- ENDIF -->
+				<!-- IF t_block1.S_LAST_ROW -->
+					</ul>
+				<!-- ENDIF -->
+			<!-- END t_block1 -->
+			<!-- UNDEFINE $SKIP -->
+<!-- ENDIF -->
+		</div>
+
+		<!-- IF .friends_online or .friends_offline -->
+		<div class="cp-mini">
+			<div class="inner"><span class="corners-top"><span></span></span>
+
+			<dl class="mini">
+				<dt>{L_FRIENDS}</dt>
+
+				<!-- BEGIN friends_online -->
+					<dd class="friend-online" title="{L_FRIENDS_ONLINE}">{friends_online.USERNAME_FULL} <!-- IF S_SHOW_PM_BOX --> <input type="submit" name="add_to[{friends_online.USER_ID}]" value="{L_ADD}" class="button2" /><!-- ENDIF --><!-- IF friends_online.S_LAST_ROW and .friends_offline --><hr /><!-- ENDIF --></dd>
+				<!-- END friends_online -->
+
+				<!-- BEGIN friends_offline -->
+					<dd class="friend-offline" title="{L_FRIENDS_OFFLINE}">{friends_offline.USERNAME_FULL} <!-- IF S_SHOW_PM_BOX --><input type="submit" name="add_to[{friends_offline.USER_ID}]" value="{L_ADD}" class="button2" /><!-- ENDIF --></dd>
+				<!-- END friends_offline -->
+			</dl>
+
+			<span class="corners-bottom"><span></span></span></div>
+		</div>
+		<!-- ENDIF -->
+	</div>
+
+	<div id="cp-main" class="ucp-main">
