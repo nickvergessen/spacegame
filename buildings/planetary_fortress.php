@@ -16,7 +16,7 @@ namespace schilljs\spacegame\buildings;
 */
 class planetary_fortress extends \schilljs\spacegame\buildings\base
 {
-  protected $times = array(
+	protected $times = array(
 		'flat'			=> 1800,
 		'linear'		=> 600,
 		'square'		=> 0,
