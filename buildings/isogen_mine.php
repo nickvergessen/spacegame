@@ -3,18 +3,18 @@
 *
 * @package SpaceGame Buildings
 * @copyright (c) 2013 schilljs
-* @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
+* @license http://opensource.org/licenses/gpl-license.php GNU Public License v2
 *
 */
 
 namespace schilljs\spacegame\buildings;
 
 /**
-* Standard building on new planets.
-* Can be upgraded to shorten building time of other buildings on the same planet and to unlock new buildings.
-* Max upgrade level : 20.
+* Mines isogen.
+* Can be upgraded to mine more isogen per hour.
+* Max upgrade level : 40.
 */
-class planetary_fortress extends \schilljs\spacegame\buildings\base
+class isogen_mine extends \schilljs\spacegame\buildings\base
 {
   protected $times = array(
 		'flat'			=> 1800,
@@ -43,7 +43,7 @@ class planetary_fortress extends \schilljs\spacegame\buildings\base
 	);
 
 	protected $buildings = array(
-		'planetary_fortress_flat'		=> 2,
+		'isogen_mine_flat'		=> 2,
 	);
 
 	protected $technologies = array(
