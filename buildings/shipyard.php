@@ -16,34 +16,36 @@ namespace schilljs\spacegame\buildings;
 */
 class shipyard extends \schilljs\spacegame\buildings\base
 {
-  protected $times = array(
-		'flat'			=> 1800,
-		'linear'		=> 600,
-		'square'		=> 0,
+	protected $times = array(
+		'flat'			=> 3600,
+		'linear'		=> 3600,
+		'square'		=> 600,
 	);
 
 	protected $costs = array(
 		'resource_one'		=> array(
-			'flat'				=> 5000,
-			'linear'			=> 500,
-			'square'			=> 0,
+			'flat'				=> 12000,
+			'linear'			=> 3000,
+			'square'			=> 1000,
 		),
 
 		'resource_two'		=> array(
-			'flat'				=> 5000,
-			'linear'			=> 500,
-			'square'			=> 0,
+			'flat'				=> 12000,
+			'linear'			=> 3000,
+			'square'			=> 1000,
 		),
 
 		'resource_three'	=> array(
-			'flat'				=> 1500,
-			'linear'			=> 300,
-			'square'			=> 100,
+			'flat'				=> 5000,
+			'linear'			=> 3000,
+			'square'			=> 500,
 		),
 	);
 
 	protected $buildings = array(
-		'shipyard_flat'		=> 2,
+		'planetary_fortress_flat'		=> 4,
+		'plasmagenerator_flat'			=> 2,
+		'warehouse_flat'				=> 1,
 	);
 
 	protected $technologies = array(

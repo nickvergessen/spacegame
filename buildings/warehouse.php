@@ -16,34 +16,37 @@ namespace schilljs\spacegame\buildings;
 */
 class warehouse extends \schilljs\spacegame\buildings\base
 {
-  protected $times = array(
-		'flat'			=> 1800,
-		'linear'		=> 600,
+	protected $times = array(
+		'flat'			=> 3600,
+		'linear'		=> 3600,
 		'square'		=> 0,
 	);
 
 	protected $costs = array(
 		'resource_one'		=> array(
 			'flat'				=> 5000,
-			'linear'			=> 500,
-			'square'			=> 0,
+			'linear'			=> 0,
+			'square'			=> 150,
 		),
 
 		'resource_two'		=> array(
 			'flat'				=> 5000,
-			'linear'			=> 500,
-			'square'			=> 0,
+			'linear'			=> 0,
+			'square'			=> 150,
 		),
 
 		'resource_three'	=> array(
 			'flat'				=> 1500,
 			'linear'			=> 300,
-			'square'			=> 100,
+			'square'			=> 80,
 		),
 	);
 
 	protected $buildings = array(
-		'warehouse_flat'		=> 2,
+		'tritanium_mine_flat'			=> 1,
+		'mercoxit_mine_flat'			=> 1,
+		'isogen_mine_flat'				=> 1,
+		'planetary_fortress_flat'		=> 2,
 	);
 
 	protected $technologies = array(

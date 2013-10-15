@@ -16,34 +16,34 @@ namespace schilljs\spacegame\buildings;
 */
 class mercoxit_mine extends \schilljs\spacegame\buildings\base
 {
-  protected $times = array(
-		'flat'			=> 1800,
-		'linear'		=> 600,
-		'square'		=> 0,
+	protected $times = array(
+		'flat'			=> 600,
+		'linear'		=> 0,
+		'square'		=> 300,
 	);
 
 	protected $costs = array(
 		'resource_one'		=> array(
-			'flat'				=> 5000,
-			'linear'			=> 500,
-			'square'			=> 0,
+			'flat'				=> 1000,
+			'linear'			=> 200,
+			'square'			=> 200,
 		),
 
 		'resource_two'		=> array(
-			'flat'				=> 5000,
-			'linear'			=> 500,
-			'square'			=> 0,
+			'flat'				=> 1500,
+			'linear'			=> 200,
+			'square'			=> 200,
 		),
 
 		'resource_three'	=> array(
-			'flat'				=> 1500,
-			'linear'			=> 300,
+			'flat'				=> 500,
+			'linear'			=> 100,
 			'square'			=> 100,
 		),
 	);
 
 	protected $buildings = array(
-		'mercoxit_mine_flat'		=> 2,
+		'planetary_fortress_flat'		=> 1,
 	);
 
 	protected $technologies = array(

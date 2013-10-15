@@ -17,33 +17,32 @@ namespace schilljs\spacegame\buildings;
 class planetary_fortress extends \schilljs\spacegame\buildings\base
 {
 	protected $times = array(
-		'flat'			=> 1800,
-		'linear'		=> 600,
-		'square'		=> 0,
+		'flat'			=> 600,
+		'linear'		=> 0,
+		'square'		=> 300,
 	);
 
 	protected $costs = array(
 		'resource_one'		=> array(
-			'flat'				=> 5000,
-			'linear'			=> 500,
-			'square'			=> 0,
+			'flat'				=> 2000,
+			'linear'			=> 1000,
+			'square'			=> 500,
 		),
 
 		'resource_two'		=> array(
-			'flat'				=> 5000,
-			'linear'			=> 500,
-			'square'			=> 0,
+			'flat'				=> 2000,
+			'linear'			=> 1000,
+			'square'			=> 500,
 		),
 
 		'resource_three'	=> array(
-			'flat'				=> 1500,
-			'linear'			=> 300,
-			'square'			=> 100,
+			'flat'				=> 1000,
+			'linear'			=> 500,
+			'square'			=> 300,
 		),
 	);
 
 	protected $buildings = array(
-		'planetary_fortress_flat'		=> 2,
 	);
 
 	protected $technologies = array(

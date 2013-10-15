@@ -16,34 +16,34 @@ namespace schilljs\spacegame\buildings;
 */
 class plasmagenerator extends \schilljs\spacegame\buildings\base
 {
-  protected $times = array(
-		'flat'			=> 1800,
-		'linear'		=> 600,
-		'square'		=> 0,
+	protected $times = array(
+		'flat'			=> 900,
+		'linear'		=> 900,
+		'square'		=> 200,
 	);
 
 	protected $costs = array(
 		'resource_one'		=> array(
-			'flat'				=> 5000,
-			'linear'			=> 500,
-			'square'			=> 0,
+			'flat'				=> 3000,
+			'linear'			=> 0,
+			'square'			=> 1000,
 		),
 
 		'resource_two'		=> array(
-			'flat'				=> 5000,
-			'linear'			=> 500,
-			'square'			=> 0,
+			'flat'				=> 2000,
+			'linear'			=> 0,
+			'square'			=> 1000,
 		),
 
 		'resource_three'	=> array(
-			'flat'				=> 1500,
-			'linear'			=> 300,
-			'square'			=> 100,
+			'flat'				=> 1000,
+			'linear'			=> 500,
+			'square'			=> 300,
 		),
 	);
 
 	protected $buildings = array(
-		'plasmagenerator_flat'		=> 2,
+		'planetary_fortress_flat'		=> 1,
 	);
 
 	protected $technologies = array(

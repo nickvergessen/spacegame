@@ -16,34 +16,37 @@ namespace schilljs\spacegame\buildings;
 */
 class planetary_defense extends \schilljs\spacegame\buildings\base
 {
-  protected $times = array(
-		'flat'			=> 1800,
-		'linear'		=> 600,
+	protected $times = array(
+		'flat'			=> 7200,
+		'linear'		=> 10400,
 		'square'		=> 0,
 	);
 
 	protected $costs = array(
 		'resource_one'		=> array(
-			'flat'				=> 5000,
-			'linear'			=> 500,
+			'flat'				=> 15000,
+			'linear'			=> 10000,
 			'square'			=> 0,
 		),
 
 		'resource_two'		=> array(
-			'flat'				=> 5000,
-			'linear'			=> 500,
+			'flat'				=> 15000,
+			'linear'			=> 10000,
 			'square'			=> 0,
 		),
 
 		'resource_three'	=> array(
-			'flat'				=> 1500,
-			'linear'			=> 300,
-			'square'			=> 100,
+			'flat'				=> 5000,
+			'linear'			=> 8000,
+			'square'			=> 0,
 		),
 	);
 
 	protected $buildings = array(
-		'planetary_defense_flat'		=> 2,
+		'planetary_fortress_flat'		=> 6,
+		'plasmagenerator_flat'			=> 4,
+		'spying_defense_flat'			=> 1,
+		'research_center_flat'			=> 3,
 	);
 
 	protected $technologies = array(

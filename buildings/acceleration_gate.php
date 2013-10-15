@@ -11,41 +11,47 @@ namespace schilljs\spacegame\buildings;
 
 /**
 * Can be build to reduce a fleets travel time.
-* Can be upgraded to lower the cooldown of reactivation.
+* Can be upgraded to increase travel speed.
 * Max upgrade level : 5.
 */
 class acceleration_gate extends \schilljs\spacegame\buildings\base
 {
-  protected $times = array(
-		'flat'			=> 1800,
-		'linear'		=> 600,
+	protected $times = array(
+		'flat'			=> 36000,
+		'linear'		=> 36000,
 		'square'		=> 0,
 	);
 
 	protected $costs = array(
 		'resource_one'		=> array(
-			'flat'				=> 5000,
-			'linear'			=> 500,
+			'flat'				=> 80000,
+			'linear'			=> 80000,
 			'square'			=> 0,
 		),
 
 		'resource_two'		=> array(
-			'flat'				=> 5000,
-			'linear'			=> 500,
+			'flat'				=> 80000,
+			'linear'			=> 80000,
 			'square'			=> 0,
 		),
 
 		'resource_three'	=> array(
-			'flat'				=> 1500,
-			'linear'			=> 300,
-			'square'			=> 100,
+			'flat'				=> 80000,
+			'linear'			=> 80000,
+			'square'			=> 0,
 		),
 	);
 
 	protected $buildings = array(
-		'acceleration_gate_flat'		=> 2,
+		'planetary_fortress_flat'		=> 15,
+		'plasmagenerator_flat'			=> 10,
+		'research_center_flat'			=> 7,
+		'deuterium_reactor_flat'		=> 10,
 	);
 
 	protected $technologies = array(
+		'warp_engine_flat'				=> 6,
+		'hyperspace_engine_flat'		=> 7,
+		'reaction_efficiency_flat'		=> 5,
 	);
 }
