@@ -1,5 +1,4 @@
 imports:
-    - { resource: tables.yml }
     - { resource: buildings.yml }
 
 services:
@@ -11,7 +10,43 @@ services:
             - @template
             - @user
             - @controller.helper
+            - @schilljs.spacegame.core
+            - @schilljs.spacegame.user
+            - @schilljs.spacegame.navigation
             - %core.root_path%
             - %core.php_ext%
-            - %tables.spacegame.users%
-            - %tables.spacegame.alliances%
+            - @schilljs.spacegame.tables
+
+    schilljs.spacegame.core:
+        class: schilljs\spacegame\core
+        arguments:
+            - @controller.helper
+            - @dbal.conn
+            - @user
+            - @schilljs.spacegame.user
+            - @schilljs.spacegame.queue
+            - @schilljs.spacegame.tables
+
+    schilljs.spacegame.navigation:
+        class: schilljs\spacegame\navigation
+        arguments:
+            - @controller.helper
+            - @template
+            - @user
+            - @schilljs.spacegame.user
+
+    schilljs.spacegame.queue:
+        class: schilljs\spacegame\queue
+        arguments:
+            - @dbal.conn
+
+    schilljs.spacegame.tables:
+        class: schilljs\spacegame\tables
+        arguments:
+            - %core.table_prefix%
+
+    schilljs.spacegame.user:
+        class: schilljs\spacegame\user
+        arguments:
+            - @dbal.conn
+            - @schilljs.spacegame.tables

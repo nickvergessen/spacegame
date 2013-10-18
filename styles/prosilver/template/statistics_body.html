@@ -7,8 +7,8 @@
 	<ul class="topiclist">
 		<li class="header">
 			<dl>
-				<!-- IF not S_ALLY_STATS --><dd class="posts"></dd><!-- ENDIF -->
-				<dt<!-- IF S_ALLY_STATS --> style="width: 45%;"<!-- ENDIF -->><!-- IF S_ALLY_STATS -->{L_ALLIANCE_NAME}<!-- ELSE -->{L_USERNAME}<!-- ENDIF --></dt>
+				<dd class="posts"></dd>
+				<dt<!-- IF S_ALLY_STATS --> style="margin-right: -490px;"<!-- ENDIF -->><!-- IF S_ALLY_STATS -->{L_ALLIANCE_NAME}<!-- ELSE -->{L_USERNAME}<!-- ENDIF --></dt>
 				<!-- IF S_ALLY_STATS --><dd class="posts"><a href="{SORT_MEMBERS}">{L_ALLIANCE_MEMBERS}</a></dd><!-- ENDIF -->
 				<dd class="posts"><a href="{SORT_BUILDING_POINTS}">{L_BUILDING_POINTS}</a><!-- IF S_ALLY_STATS --><br /><a href="{SORT_BUILDING_POINTS_PM}">{L_PER_MEMBER}</a><!-- ENDIF --></dd>
 				<dd class="posts"><a href="{SORT_TECHNOLOGY_POINTS}">{L_TECHNOLOGY_POINTS}</a><!-- IF S_ALLY_STATS --><br /><a href="{SORT_TECHNOLOGY_POINTS_PM}">{L_PER_MEMBER}</a><!-- ENDIF --></dd>
@@ -22,8 +22,12 @@
 	<!-- BEGIN userrow -->
 		<li class="row<!-- IF userrow.S_ROW_COUNT is odd --> bg1<!-- ELSE --> bg2<!-- ENDIF -->">
 			<dl>
-				<!-- IF not S_ALLY_STATS --><dd class="posts" style="line-height: 1.0em; padding: 0px;">{userrow.TOTAL_PLACE}<br />{userrow.TOTAL_PLACE_ADD}</dd><!-- ENDIF -->
-				<dt<!-- IF S_ALLY_STATS --> style="width: 45%;"<!-- ENDIF -->>
+				<!-- IF not S_ALLY_STATS -->
+					<dd class="posts" style="line-height: 1.0em; padding: 0px;">{userrow.TOTAL_PLACE}<br />{userrow.TOTAL_PLACE_ADD}</dd>
+				<!-- ELSE -->
+					<dd class="posts" style="line-height: 1.0em; padding: 0px;">&nbsp;</dd>
+				<!-- ENDIF -->
+				<dt<!-- IF S_ALLY_STATS --> style="margin-right: -490px;"<!-- ENDIF -->>
 					<!-- IF userrow.S_IS_NOOB --><img src="{T_IMAGES_PATH}space/new.png" alt="{L_GALAXY_NOOB}" title="{L_GALAXY_NOOB_LONG}" /><!-- ENDIF -->
 					<!-- IF userrow.S_IS_PROTECTED --><img src="{T_IMAGES_PATH}space/protected.png" alt="{L_GALAXY_PROTECTED}" title="{L_GALAXY_PROTECTED_LONG}" /><!-- ENDIF -->
 					<!-- IF userrow.S_IS_VACATION --><img src="{T_IMAGES_PATH}space/vacation.png" alt="{L_GALAXY_VACATION}" title="{L_GALAXY_VACATION_LONG}" />&nbsp;<!-- ENDIF -->

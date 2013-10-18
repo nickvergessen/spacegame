@@ -1,4 +1,5 @@
 <!-- INCLUDE overall_header.html -->
+
 <!-- IF SPACE_GLOBAL_MESSAGE -->
 <div id="space_information" class="rules">
 	<div class="inner"><span class="corners-top"><span></span></span>
@@ -7,7 +8,7 @@
 </div>
 <!-- ENDIF -->
 
-<!-- DEFINE $TABSTYLE = false -->
+<!-- DEFINE $TABSTYLE = '' -->
 
 <p class="{S_CONTENT_FLOW_END}<!-- IF S_USER_LOGGED_IN --> rightside<!-- ENDIF -->"><!-- IF S_USER_LOGGED_IN -->{LAST_VISIT_DATE}<!-- ELSE -->{CURRENT_TIME}<!-- ENDIF --></p>
 <!-- IF U_MCP --><p>{CURRENT_TIME} <br />[&nbsp;<a href="{U_MCP}">{L_MCP}</a>&nbsp;]</p><!-- ELSEIF S_USER_LOGGED_IN --><p>{CURRENT_TIME}</p><!-- ENDIF -->
@@ -43,7 +44,7 @@
 		<!-- END t_block2 -->
 			</ul>
 <!-- ELSE -->
-			<!-- DEFINE $SKIP = false -->
+			<!-- DEFINE $SKIP = '' -->
 			<!-- BEGIN t_block1 -->
 				<!-- IF t_block1.S_FIRST_ROW -->
 					<ul>
@@ -71,7 +72,7 @@
 					</ul>
 					<hr/>
 					<ul>
-					<!-- DEFINE $SKIP = false -->
+					<!-- DEFINE $SKIP = '' -->
 				<!-- ENDIF -->
 				<!-- IF t_block1.S_LAST_ROW -->
 					</ul>

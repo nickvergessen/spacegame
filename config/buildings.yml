@@ -6,7 +6,7 @@ services:
         tags:
             - { name: service_collection, tag: schilljs.spacegame.building }
 
-     schilljs.spacegame.building.planetary_fortress:
+    schilljs.spacegame.building.planetary_fortress:
         class: schilljs\spacegame\building\planetary_fortress
         scope: prototype
         tags:

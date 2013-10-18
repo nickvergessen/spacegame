@@ -10,8 +10,11 @@
 
 namespace schilljs\spacegame\controller;
 
-class statistics
+class statistics extends \schilljs\spacegame\controller\base
 {
+	/* @var \phpbb\db\driver\driver */
+	protected $db;
+
 	/* @var \phpbb\config */
 	protected $config;
 
@@ -40,12 +43,14 @@ class statistics
 	* @param \phpbb\template	$template	Template object
 	* @param \phpbb\user	$user		User object
 	* @param \phpbb\controller\helper		$helper				Controller helper object
+	* @param \schilljs\spacegame\core		$space_core
+	* @param \schilljs\spacegame\user		$space_user
+	* @param \schilljs\spacegame\navigation		$navigation
 	* @param string			$root_path	phpBB root path
 	* @param string			$php_ext	phpEx
-	* @param string			$users_table		Table with user stats
-	* @param string			$alliances_table	Table with alliance stats
+	* @param \schilljs\spacegame\tables		$tables
 	*/
-	public function __construct(\phpbb\db\driver\driver $db, \phpbb\config\config $config, \phpbb\template\template $template, \phpbb\user $user, \phpbb\controller\helper $helper, $root_path, $php_ext, $users_table, $alliances_table)
+	public function __construct(\phpbb\db\driver\driver $db, \phpbb\config\config $config, \phpbb\template\template $template, \phpbb\user $user, \phpbb\controller\helper $helper, \schilljs\spacegame\core $space_core, \schilljs\spacegame\user $space_user, \schilljs\spacegame\navigation $navigation, $root_path, $php_ext, $tables)
 	{
 		$this->db = $db;
 		$this->config = $config;
@@ -54,8 +59,11 @@ class statistics
 		$this->helper = $helper;
 		$this->root_path = $root_path;
 		$this->php_ext = $php_ext;
-		$this->users_table = $users_table;
-		$this->alliances_table = $alliances_table;
+
+		$this->tables = $tables;
+		$this->space_core = $space_core;
+		$this->space_user = $space_user;
+		$this->navigation = $navigation;
 	}
 
 	/**
@@ -65,18 +73,20 @@ class statistics
 	*/
 	public function users($sort_key, $sort_dir)
 	{
+		$this->init();
+
 		$sort_key = (in_array($sort_key, $this->sort_keys)) ? $sort_key : 'total';
 		$sort_dir = ($sort_dir == 'asc') ? 'ASC' : 'DESC';
 
 		$sql = 'SELECT *
-			FROM ' . $this->users_table . "
+			FROM ' . $this->tables->get('users') . "
 			ORDER BY {$sort_key}_points $sort_dir";
 		$result = $this->db->sql_query($sql);
 
 		while ($row = $this->db->sql_fetchrow($result))
 		{
 			$stats = array();
-			foreach ($this->stats as $stat)
+			foreach ($this->sort_keys as $stat)
 			{
 				$stats[strtoupper($stat) . '_POINTS'] = round(($row[$stat . '_points'] / 1000), 1);
 				$stats[strtoupper($stat) . '_POINTS_ADD'] = ((($row[$stat . '_points'] - $row['last_' . $stat . '_points']) > 0) ? '+' . round((($row[$stat . '_points'] - $row['last_' . $stat . '_points']) / 1000), 1) : '');
@@ -88,9 +98,9 @@ class statistics
 				'TOTAL_PLACE'		=> $row['total_place'],
 				'TOTAL_PLACE_ADD'	=> ($place == 0) ? '<span style="color: #000000;">&plusmn;0</span>' : (($place > 0) ? '<span style="color: #00AA00;">+' . $place . '</span>' : '<span style="color: #AA0000;">' . $place . '</span>'),
 
-				'S_IS_PROTECTED'	=> calc_noob_protection($row['total_points'], $space->udata['total_points']),
+				'S_IS_PROTECTED'	=> false,//@todo: calc_noob_protection($row['total_points'], $space->udata['total_points']),
 				'S_IS_VACATION'		=> $row['user_vacation'],
-				'S_IS_NOOB'			=> ($row['user_gameplay_start'] + SPACE_NOOB_SCHUTZ > time()),
+				'S_IS_NOOB'			=> false,//@todo: ($row['user_gameplay_start'] + SPACE_NOOB_SCHUTZ > time()),
 			)));
 		}
 		$this->db->sql_freeresult($result);
@@ -115,6 +125,8 @@ class statistics
 	*/
 	public function alliances($sort_key, $sort_dir, $mode)
 	{
+		$this->init();
+
 		$sort_key = ($sort_key == 'members') ? 'ally_members' : ((in_array($sort_key, $this->sort_keys)) ? $sort_key : 'total') . '_points';
 		$sort_dir = ($sort_dir == 'asc') ? 'ASC' : 'DESC';
 
@@ -131,7 +143,7 @@ class statistics
 		);
 
 		$sql = 'SELECT *
-			FROM ' . $this->users_table . '
+			FROM ' . $this->tables->get('users') . '
 			WHERE ally_id = 0';
 		$result = $this->db->sql_query($sql);
 
@@ -151,7 +163,7 @@ class statistics
 		}
 
 		$sql = 'SELECT *
-			FROM ' . $this->alliances_table;
+			FROM ' . $this->tables->get('alliances');
 		$result = $this->db->sql_query($sql);
 
 		while ($row = $this->db->sql_fetchrow($result))
