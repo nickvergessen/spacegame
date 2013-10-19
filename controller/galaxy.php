@@ -12,6 +12,8 @@ namespace schilljs\spacegame\controller;
 
 class galaxy extends \schilljs\spacegame\controller\base
 {
+	protected $favorite_planets = array();
+
 	/**
 	* Constructor
 	*
@@ -44,10 +46,10 @@ class galaxy extends \schilljs\spacegame\controller\base
 	public function favorites()
 	{
 		$this->init();
-
+		$this->favorite_planets = $this->favorites->get_planets();
 		$this->display_favorite_quadrants();
 
-		$this->display_map($this->favorites->get_planets());
+		$this->display_map($this->favorite_planets);
 
 		$this->template->assign_vars(array(
 			'L_TITLE'			=> $this->user->lang('HL_GALAXY_FAVORITES'),
@@ -64,7 +66,7 @@ class galaxy extends \schilljs\spacegame\controller\base
 	public function map($mquad, $quad)
 	{
 		$this->init();
-
+		$this->favorite_planets = $this->favorites->get_planets();
 		$this->display_favorite_quadrants();
 
 		$navigation = $this->space_user->get_navigation();
@@ -130,9 +132,13 @@ class galaxy extends \schilljs\spacegame\controller\base
 							$planet_image = 'orange';
 						break;
 					}
+
+					$s_favorite_planet = isset($this->favorite_planets[$mquadrant][$quadrant]) &&  in_array($planet, $this->favorite_planets[$mquadrant][$quadrant]);
 					$this->template->assign_block_vars('planetrow', array(
-						'PLANET_NAME'	=> $mquadrant . ':' . $quadrant . ':' . $planet,
-						'PLANET_IMAGE'	=> 'planet_' . $planet_image,
+						'PLANET_NAME'		=> $mquadrant . ':' . $quadrant . ':' . $planet,
+						'PLANET_IMAGE'		=> 'planet_' . $planet_image,
+						'S_FAVORITE_PLANET'		=> $s_favorite_planet,
+						'U_FAVORITE_PLANET'		=> ($s_favorite_planet) ? $this->helper->url('galaxy/favorites/remove/' . $planet) : $this->helper->url('galaxy/favorites/add/' . $planet),
 					));
 				}
 			}

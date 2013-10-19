@@ -74,10 +74,10 @@
 					<!-- IF planetrow.S_IS_PROTECTED --><img src="{T_IMAGES_PATH}space/protected.png" alt="{L_GALAXY_PROTECTED}" title="{L_GALAXY_PROTECTED_LONG}" />&nbsp;<!-- ENDIF -->
 					<!-- IF planetrow.S_IS_VACATION --><img src="{T_IMAGES_PATH}space/vacation.png" alt="{L_GALAXY_VACATION}" title="{L_GALAXY_VACATION_LONG}" />&nbsp;<!-- ENDIF -->
 					<!-- IF planetrow.PLAYER --><strong>{planetrow.PLANET_NAME}</strong><!-- ELSE -->{planetrow.PLANET_NAME}<!-- ENDIF -->
-					<!-- IF not planetrow.S_IS_FAVO -->
-						<a href="{planetrow.U_FAVO_PLANET}"><img src="{T_IMAGES_PATH}space/quick_add.png" alt="{L_GALAXY_FAVORITE_ADD}" title="{L_GALAXY_FAVORITE_ADD}" /></a>
+					<!-- IF not planetrow.S_FAVORITE_PLANET -->
+						<a href="{planetrow.U_FAVORITE_PLANET}"><img src="{T_IMAGES_PATH}space/quick_add.png" alt="{L_GALAXY_FAVORITE_ADD}" title="{L_GALAXY_FAVORITE_ADD}" /></a>
 					<!-- ELSE -->
-						<a href="{planetrow.U_FAVO_PLANET}"><img src="{T_IMAGES_PATH}space/quick_remove.png" alt="{L_GALAXY_FAVORITE_REMOVE}" title="{L_GALAXY_FAVORITE_REMOVE}" /></a>
+						<a href="{planetrow.U_FAVORITE_PLANET}"><img src="{T_IMAGES_PATH}space/quick_remove.png" alt="{L_GALAXY_FAVORITE_REMOVE}" title="{L_GALAXY_FAVORITE_REMOVE}" /></a>
 					<!-- ENDIF -->
 					</div>
 				</dt>
