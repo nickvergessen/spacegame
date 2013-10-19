@@ -64,6 +64,8 @@ class statistics extends \schilljs\spacegame\controller\base
 		$this->space_core = $space_core;
 		$this->space_user = $space_user;
 		$this->navigation = $navigation;
+
+		$this->user->add_lang_ext('schilljs/spacegame', 'statistics');
 	}
 
 	/**

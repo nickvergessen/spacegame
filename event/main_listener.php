@@ -26,7 +26,7 @@ class main_listener implements \Symfony\Component\EventDispatcher\EventSubscribe
 	static public function getSubscribedEvents()
 	{
 		return array(
-			#'core.user_setup'						=> 'load_language_on_setup',
+			'core.user_setup'						=> 'load_language_on_setup',
 			'core.page_header'						=> 'add_page_header_link',
 			#'core.viewonline_overwrite_location'	=> 'add_newspage_viewonline',
 		);
@@ -36,8 +36,8 @@ class main_listener implements \Symfony\Component\EventDispatcher\EventSubscribe
 	{
 		$lang_set_ext = $event['lang_set_ext'];
 		$lang_set_ext[] = array(
-			'ext_name' => 'nickvergessen/newspage',
-			'lang_set' => 'newspage',
+			'ext_name' => 'schilljs/spacegame',
+			'lang_set' => 'navigation',
 		);
 		$event['lang_set_ext'] = $lang_set_ext;
 	}

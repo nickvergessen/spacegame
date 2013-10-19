@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* @package SpaceGame Core
+* @package SpaceGame Navigation
 * @copyright (c) 2013 schilljs
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
