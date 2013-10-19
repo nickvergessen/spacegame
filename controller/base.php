@@ -29,6 +29,8 @@ abstract class base
 
 	protected function init()
 	{
+		$this->user->add_lang_ext('schilljs/spacegame', 'common');
+
 		$this->space_core->run_queue();
 		$this->space_user->load_planets();
 		if (!$this->space_user->num_planets())

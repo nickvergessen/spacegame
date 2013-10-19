@@ -45,9 +45,9 @@
 		<!-- ENDIF -->
 		{QUADRANT}
 		<!-- IF U_SPYQUAD -->
-			<a href="{U_SPYQUAD}"><img src="{T_IMAGES_PATH}space/spy.png" alt="{L_FLIGHT_STYLE_SPYQUAD}" title="{L_FLIGHT_STYLE_SPYQUAD}" /></a>
+			<a href="{U_SPYQUAD}"><img src="{T_IMAGES_PATH}space/spy.png" alt="{L_MAP_ACTION_SPYQUAD}" title="{L_MAP_ACTION_SPYQUAD}" /></a>
 		<!-- ELSE -->
-			<img src="{T_IMAGES_PATH}space/no_spy.png" alt="{L_FLIGHT_STYLE_SPYQUAD}" title="{L_FLIGHT_STYLE_SPYQUAD}" />
+			<img src="{T_IMAGES_PATH}space/no_spy.png" alt="{L_MAP_ACTION_SPYQUAD}" title="{L_MAP_ACTION_SPYQUAD}" />
 		<!-- ENDIF -->
 		{QUADSPY_STATUS}
 	</fieldset>
@@ -56,9 +56,9 @@
 	<ul class="topiclist">
 		<li class="header">
 			<dl class="icon">
-				<dt>{L_PLANETS}</dt>
+				<dt><div class="list-inner">{L_PLANETS}</div></dt>
 				<dd class="lastpost"><span>{L_PLAYER}</span></dd>
-				<dd class="mark" style="width: 100px;"><span>{L_FLIGHT_STYLE}</span></dd>
+				<dd class="mark" style="width: 100px;"><span>{L_MAP_ACTION}</span></dd>
 			</dl>
 		</li>
 	</ul>
@@ -66,8 +66,9 @@
 	<ul class="topiclist cplist">
 	<!-- BEGIN planetrow -->
 		<li class="row<!-- IF planetrow.S_ROW_COUNT is odd --> bg1<!-- ELSE --> bg2<!-- ENDIF -->">
-			<dl class="icon"<!-- IF planetrow.PLANET_IMG_SRC --> style="background-image: url({planetrow.PLANET_IMG_SRC}); background-repeat: no-repeat;"<!-- ENDIF -->>
+			<dl class="icon {planetrow.PLANET_IMAGE}">
 				<dt>
+					<div class="list-inner">
 					<strong>{planetrow.PLANET_ROW}<!-- IF S_GALAXY_OVERVIEW -->.<!-- ENDIF --></strong>
 					<!-- IF planetrow.S_IS_NOOB --><img src="{T_IMAGES_PATH}space/new.png" alt="{L_GALAXY_NOOB}" title="{L_GALAXY_NOOB_LONG}" />&nbsp;<!-- ENDIF -->
 					<!-- IF planetrow.S_IS_PROTECTED --><img src="{T_IMAGES_PATH}space/protected.png" alt="{L_GALAXY_PROTECTED}" title="{L_GALAXY_PROTECTED_LONG}" />&nbsp;<!-- ENDIF -->
@@ -78,17 +79,18 @@
 					<!-- ELSE -->
 						<a href="{planetrow.U_FAVO_PLANET}"><img src="{T_IMAGES_PATH}space/quick_remove.png" alt="{L_GALAXY_FAVORITE_REMOVE}" title="{L_GALAXY_FAVORITE_REMOVE}" /></a>
 					<!-- ENDIF -->
+					</div>
 				</dt>
 				<dd class="lastpost"><span>
 					<!-- IF planetrow.PLAYER --><strong>{planetrow.USERNAME} <!-- IF planetrow.ALLY_TAG -->[{planetrow.ALLY_TAG}]<!-- ENDIF --></strong><!-- ELSE -->{planetrow.USERNAME}<!-- ENDIF -->
 					<!-- IF planetrow.U_PLAYER_PM --> <a href="{planetrow.U_PLAYER_PM}"><img src="{T_IMAGES_PATH}space/comment.png" alt="{L_PRIVATE_MESSAGE}" /></a><!-- ENDIF -->
 				</span></dd>
 				<dd class="mark" style="width: 100px;">
-					<!-- IF planetrow.U_SPY --><a href="{planetrow.U_SPY}"><img src="{T_IMAGES_PATH}space/spy.png" alt="{L_FLIGHT_STYLE_SPY}" title="{L_FLIGHT_STYLE_SPY}" /></a> <!-- ELSE --><img src="{T_IMAGES_PATH}space/no_spy.png" alt="{L_FLIGHT_STYLE_SPY}" title="{L_FLIGHT_STYLE_SPY}" /> <!-- ENDIF -->
-					<!-- IF planetrow.U_TRADE --><a href="{planetrow.U_TRADE}"><img src="{T_IMAGES_PATH}space/trade.png" alt="{L_FLIGHT_STYLE_TRADE}" title="{L_FLIGHT_STYLE_TRADE}" /></a> <!-- ELSE --><img src="{T_IMAGES_PATH}space/no_trade.png" alt="{L_FLIGHT_STYLE_TRADE}" title="{L_FLIGHT_STYLE_TRADE}" /> <!-- ENDIF -->
-					<!-- IF planetrow.U_ATTACK --><a href="{planetrow.U_ATTACK}"><img src="{T_IMAGES_PATH}space/attack.png" alt="{L_FLIGHT_STYLE_ATTACK}" title="{L_FLIGHT_STYLE_ATTACK}" /></a> <!-- ELSE --><img src="{T_IMAGES_PATH}space/no_attack.png" alt="{L_FLIGHT_STYLE_ATTACK}" title="{L_FLIGHT_STYLE_ATTACK}" /> <!-- ENDIF -->
-					<!-- IF planetrow.U_COLONISE --><a href="{planetrow.U_COLONISE}"><img src="{T_IMAGES_PATH}space/colonise.png" alt="{L_FLIGHT_STYLE_COLONISE}" title="{L_FLIGHT_STYLE_COLONISE}" /></a> <!-- ELSE --><img src="{T_IMAGES_PATH}space/no_colonise.png" alt="{L_FLIGHT_STYLE_COLONISE}" title="{L_FLIGHT_STYLE_COLONISE}" /> <!-- ENDIF -->
-					<!-- IF planetrow.U_DESTROY --><a href="{planetrow.U_DESTROY}"><img src="{T_IMAGES_PATH}space/destroy.png" alt="{L_FLIGHT_STYLE_DESTROY}" title="{L_FLIGHT_STYLE_DESTROY}" /></a> <!-- ELSE --><img src="{T_IMAGES_PATH}space/no_destroy.png" alt="{L_FLIGHT_STYLE_DESTROY}" title="{L_FLIGHT_STYLE_DESTROY}" /> <!-- ENDIF -->
+					<!-- IF planetrow.U_SPY --><a href="{planetrow.U_SPY}"><img src="{T_IMAGES_PATH}space/spy.png" alt="{L_MAP_ACTION_SPY}" title="{L_MAP_ACTION_SPY}" /></a> <!-- ELSE --><img src="{T_IMAGES_PATH}space/no_spy.png" alt="{L_MAP_ACTION_SPY}" title="{L_MAP_ACTION_SPY}" /> <!-- ENDIF -->
+					<!-- IF planetrow.U_TRADE --><a href="{planetrow.U_TRADE}"><img src="{T_IMAGES_PATH}space/trade.png" alt="{L_MAP_ACTION_TRADE}" title="{L_MAP_ACTION_TRADE}" /></a> <!-- ELSE --><img src="{T_IMAGES_PATH}space/no_trade.png" alt="{L_MAP_ACTION_TRADE}" title="{L_MAP_ACTION_TRADE}" /> <!-- ENDIF -->
+					<!-- IF planetrow.U_ATTACK --><a href="{planetrow.U_ATTACK}"><img src="{T_IMAGES_PATH}space/attack.png" alt="{L_MAP_ACTION_ATTACK}" title="{L_MAP_ACTION_ATTACK}" /></a> <!-- ELSE --><img src="{T_IMAGES_PATH}space/no_attack.png" alt="{L_MAP_ACTION_ATTACK}" title="{L_MAP_ACTION_ATTACK}" /> <!-- ENDIF -->
+					<!-- IF planetrow.U_COLONISE --><a href="{planetrow.U_COLONISE}"><img src="{T_IMAGES_PATH}space/colonise.png" alt="{L_MAP_ACTION_COLONISE}" title="{L_MAP_ACTION_COLONISE}" /></a> <!-- ELSE --><img src="{T_IMAGES_PATH}space/no_colonise.png" alt="{L_MAP_ACTION_COLONISE}" title="{L_MAP_ACTION_COLONISE}" /> <!-- ENDIF -->
+					<!-- IF planetrow.U_DESTROY --><a href="{planetrow.U_DESTROY}"><img src="{T_IMAGES_PATH}space/destroy.png" alt="{L_MAP_ACTION_DESTROY}" title="{L_MAP_ACTION_DESTROY}" /></a> <!-- ELSE --><img src="{T_IMAGES_PATH}space/no_destroy.png" alt="{L_MAP_ACTION_DESTROY}" title="{L_MAP_ACTION_DESTROY}" /> <!-- ENDIF -->
 				</dd>
 			</dl>
 		</li>

@@ -114,9 +114,25 @@ class galaxy extends \schilljs\spacegame\controller\base
 			{
 				foreach ($planets as $planet)
 				{
+					$planet_image = 'black';
+					switch ($planet % 5)
+					{
+						case 1:
+							$planet_image = 'blue';
+						break;
+						case 2:
+							$planet_image = 'green';
+						break;
+						case 3:
+							$planet_image = 'grey';
+						break;
+						case 4:
+							$planet_image = 'orange';
+						break;
+					}
 					$this->template->assign_block_vars('planetrow', array(
-						'QUAD_NAME'	=> '[' . $mquadrant . ':' . $quadrant . ']',
-						'U_QUAD'	=> $this->helper->url('galaxy/map/' . $mquadrant . '/' . $quadrant),
+						'PLANET_NAME'	=> $mquadrant . ':' . $quadrant . ':' . $planet,
+						'PLANET_IMAGE'	=> 'planet_' . $planet_image,
 					));
 				}
 			}
