@@ -1,22 +1,8 @@
 imports:
     - { resource: buildings.yml }
+    - { resource: controller.yml }
 
 services:
-    schilljs.spacegame.controller.statistics:
-        class: schilljs\spacegame\controller\statistics
-        arguments:
-            - @dbal.conn
-            - @config
-            - @template
-            - @user
-            - @controller.helper
-            - @schilljs.spacegame.core
-            - @schilljs.spacegame.user
-            - @schilljs.spacegame.navigation
-            - %core.root_path%
-            - %core.php_ext%
-            - @schilljs.spacegame.tables
-
     schilljs.spacegame.core:
         class: schilljs\spacegame\core
         arguments:

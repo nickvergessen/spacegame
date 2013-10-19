@@ -48,9 +48,9 @@ class navigation
 				'name'			=> 'NAV_GENERAL',
 				'children'		=> array(
 					array(
-						'route'			=> 'general/planet',
+						'route'			=> 'general/planets',
 						'condition'		=> true,
-						'name'			=> 'NAV_GENERAL_PLANET',
+						'name'			=> 'NAV_GENERAL_PLANETS',
 					),
 					array(
 						'route'			=> 'general/settings',

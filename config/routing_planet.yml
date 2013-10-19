@@ -1,0 +1,24 @@
+schilljs_spacegame_planet_controller:
+    pattern: /planet
+    defaults: { _controller: schilljs.spacegame.controller.planet:nyf }
+
+schilljs_spacegame_planet_overview_controller:
+    pattern: /planet/overview
+    defaults: { _controller: schilljs.spacegame.controller.planet:nyf }
+
+schilljs_spacegame_planet_buildings_controller:
+    pattern: /planet/buildings
+    defaults: { _controller: schilljs.spacegame.controller.planet:nyf }
+
+schilljs_spacegame_planet_dockyard_controller:
+    pattern: /planet/dockyard
+    defaults: { _controller: schilljs.spacegame.controller.planet:nyf }
+
+schilljs_spacegame_planet_laboratory_controller:
+    pattern: /planet/laboratory
+    defaults: { _controller: schilljs.spacegame.controller.planet:nyf }
+
+schilljs_spacegame_planet_fleet_controller:
+    pattern: /planet/fleet
+    defaults: { _controller: schilljs.spacegame.controller.planet:nyf }
+

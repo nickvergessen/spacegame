@@ -12,14 +12,20 @@ namespace schilljs\spacegame\controller;
 
 abstract class base
 {
+	/* @var \phpbb\controller\helper */
+	protected $helper;
+
+	/* @var \phpbb\user */
+	protected $user;
+
 	/* @var \schilljs\spacegame\core */
 	protected $space_core;
 
 	/* @var \schilljs\spacegame\navigation */
 	protected $navigation;
 
-	/* @var \phpbb\controller\helper */
-	protected $helper;
+	/* @var \schilljs\spacegame\user */
+	protected $space_user;
 
 	protected function init()
 	{
@@ -35,5 +41,17 @@ abstract class base
 	protected function init_gameplay()
 	{
 		$this->space_core->run_queue();
+	}
+
+	/**
+	* Display statistics for the users
+	*
+	* @return Symfony\Component\HttpFoundation\Response A Symfony Response object
+	*/
+	public function nyf()
+	{
+		$this->init();
+
+		return $this->helper->render('nyf_body.html', $this->user->lang('NYF'));
 	}
 }

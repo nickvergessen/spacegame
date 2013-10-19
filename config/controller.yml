@@ -1,0 +1,51 @@
+services:
+    schilljs.spacegame.controller.alliance:
+        class: schilljs\spacegame\controller\alliance
+        arguments:
+            - @controller.helper
+            - @user
+            - @schilljs.spacegame.core
+            - @schilljs.spacegame.navigation
+            - @schilljs.spacegame.user
+
+    schilljs.spacegame.controller.galaxy:
+        class: schilljs\spacegame\controller\galaxy
+        arguments:
+            - @controller.helper
+            - @user
+            - @schilljs.spacegame.core
+            - @schilljs.spacegame.navigation
+            - @schilljs.spacegame.user
+
+    schilljs.spacegame.controller.general:
+        class: schilljs\spacegame\controller\general
+        arguments:
+            - @controller.helper
+            - @user
+            - @schilljs.spacegame.core
+            - @schilljs.spacegame.navigation
+            - @schilljs.spacegame.user
+
+    schilljs.spacegame.controller.planet:
+        class: schilljs\spacegame\controller\planet
+        arguments:
+            - @controller.helper
+            - @user
+            - @schilljs.spacegame.core
+            - @schilljs.spacegame.navigation
+            - @schilljs.spacegame.user
+
+    schilljs.spacegame.controller.statistics:
+        class: schilljs\spacegame\controller\statistics
+        arguments:
+            - @dbal.conn
+            - @config
+            - @template
+            - @user
+            - @controller.helper
+            - @schilljs.spacegame.core
+            - @schilljs.spacegame.navigation
+            - @schilljs.spacegame.user
+            - %core.root_path%
+            - %core.php_ext%
+            - @schilljs.spacegame.tables
