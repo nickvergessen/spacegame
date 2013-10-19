@@ -13,6 +13,13 @@ services:
             - @schilljs.spacegame.queue
             - @schilljs.spacegame.tables
 
+    schilljs.spacegame.favorites:
+        class: schilljs\spacegame\favorites
+        arguments:
+            - @dbal.conn
+            - @schilljs.spacegame.tables
+            - @schilljs.spacegame.user
+
     schilljs.spacegame.navigation:
         class: schilljs\spacegame\navigation
         arguments:

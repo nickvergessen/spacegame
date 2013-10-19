@@ -40,7 +40,7 @@ class statistics extends \schilljs\spacegame\controller\base
 	*
 	* @param \phpbb\db\driver\driver	$db		Config object
 	* @param \phpbb\config	$config		Config object
-	* @param \phpbb\template	$template	Template object
+	* @param \phpbb\template\template	$template	Template object
 	* @param \phpbb\user	$user		User object
 	* @param \phpbb\controller\helper		$helper				Controller helper object
 	* @param \schilljs\spacegame\core		$space_core
@@ -114,10 +114,10 @@ class statistics extends \schilljs\spacegame\controller\base
 			'SORT_BATTLE_POINTS'		=> $this->helper->url('stats/users/battle/' . $sort_dir_link),
 			'SORT_TOTAL_POINTS'			=> $this->helper->url('stats/users/total/' . $sort_dir_link),
 
-			'L_TITLE'			=> $this->user->lang('SPACE_STATISTICS_USERS'),
+			'L_TITLE'			=> $this->user->lang('HL_STATISTICS_USERS'),
 		));
 
-		return $this->helper->render('statistics_body.html', $this->user->lang('SPACE_STATISTICS_USERS'));
+		return $this->helper->render('statistics_body.html', $this->user->lang('HL_STATISTICS_USERS'));
 	}
 
 	/**
@@ -224,11 +224,11 @@ class statistics extends \schilljs\spacegame\controller\base
 			'SORT_BATTLE_POINTS_PM'		=> $this->helper->url('stats/alliances/battle/' . $sort_dir_pm_link . '/members'),
 			'SORT_TOTAL_POINTS_PM'		=> $this->helper->url('stats/alliances/total/' . $sort_dir_pm_link . '/members'),
 
-			'L_TITLE'			=> $this->user->lang('SPACE_STATISTICS_ALLIANCES'),
+			'L_TITLE'			=> $this->user->lang('HL_STATISTICS_ALLIANCES'),
 			'S_ALLY_STATS'		=> true,
 		));
 
-		return $this->helper->render('statistics_body.html', $this->user->lang('SPACE_STATISTICS_ALLIANCES'));
+		return $this->helper->render('statistics_body.html', $this->user->lang('HL_STATISTICS_ALLIANCES'));
 	}
 
 	private function sort_ally_array($ary, $sort_by, $per_member)

@@ -174,12 +174,12 @@ class navigation
 				$this->template->assign_block_vars($template_block, array(
 					'U_TITLE'		=> $this->helper->url($navigation['route']),
 					'L_TITLE'		=> $this->user->lang($navigation['name']),
-					'S_SELECTED'	=> $mark_active || $this->is_active($navigation['route'], $template_block == 't_block1'),
+					'S_SELECTED'	=> $mark_active || $this->is_active($navigation['route']),
 				));
 
-				if (($mark_active || $this->is_active($navigation['route'], $template_block == 't_block1')) && !empty($navigation['children']))
+				if (($mark_active || $this->is_active($navigation['route'])) && !empty($navigation['children']))
 				{
-					$this->display_step($navigation['children'], 't_block2', $this->is_active($navigation['route']));
+					$this->display_step($navigation['children'], 't_block2', $this->get_route($this->user->page['page_name']) === $navigation['route']);
 				}
 
 				$mark_active = false;
@@ -187,13 +187,18 @@ class navigation
 		}
 	}
 
-	protected function is_active($route, $category = false)
+	protected function is_active($route)
 	{
-		$page = $this->user->page['page_name'];
+		$page = $this->get_route($this->user->page['page_name']);
+		return $page === $route || strpos($page, $route. '/') === 0;
+	}
+
+	protected function get_route($page)
+	{
 		if (strpos($page, 'app.php/') === 0)
 		{
 			$page = substr($page, strlen('app.php/'));
 		}
-		return $page === $route || ($category && strpos($page, $route. '/') === 0);
+		return $page;
 	}
 }

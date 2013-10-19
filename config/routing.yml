@@ -9,15 +9,3 @@ schilljs_spacegame_general_planets_controller:
 schilljs_spacegame_general_settings_controller:
     pattern: /general/settings
     defaults: { _controller: schilljs.spacegame.controller.general:nyf }
-
-schilljs_spacegame_galaxy_controller:
-    pattern: /galaxy
-    defaults: { _controller: schilljs.spacegame.controller.galaxy:nyf }
-
-schilljs_spacegame_galaxy_favorites_controller:
-    pattern: /galaxy/favorites
-    defaults: { _controller: schilljs.spacegame.controller.galaxy:nyf }
-
-schilljs_spacegame_galaxy_map_controller:
-    pattern: /galaxy/map
-    defaults: { _controller: schilljs.spacegame.controller.galaxy:nyf }

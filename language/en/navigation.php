@@ -43,6 +43,6 @@ $lang = array_merge($lang, array(
 	'NAV_PLANET_FLEET'		=> 'Fleet',
 
 	'NAV_STATISTICS'			=> 'Statistics',
-	'NAV_STATISTICS_USERS'		=> 'User-Statistics',
-	'NAV_STATISTICS_ALLIANCES'	=> 'Alliance-Statistics',
+	'NAV_STATISTICS_USERS'		=> 'Player Statistics',
+	'NAV_STATISTICS_ALLIANCES'	=> 'Alliance Statistics',
 ));

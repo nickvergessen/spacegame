@@ -1,0 +1,101 @@
+<!-- INCLUDE space_header.html -->
+
+<h2>{L_TITLE}</h2>
+
+<div class="panel">
+	<div class="inner"><span class="corners-top"><span></span></span>
+
+	<p>{L_GALAXY_FAVORITES}</p>
+
+	<p><strong>
+	<!-- BEGIN favorite -->
+		<a href="{favorite.U_QUAD}">{favorite.QUAD_NAME}</a><!-- IF not favorite.S_LAST_ROW -->, <!-- ENDIF -->
+	<!-- BEGINELSE -->
+		{L_GALAXY_FAVORITE_NONE}
+	<!-- END favorite -->
+	</strong></p>
+
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+
+<div class="panel">
+	<div class="inner"><span class="corners-top"><span></span></span>
+
+	<!-- IF S_GALAXY_OVERVIEW -->
+	<form id="space" method="post" action="{S_SPACE_ACTION}"{S_FORM_ENCTYPE}>
+		<fieldset class="display-options">
+			<!-- IF CONST_SPACE_NUM_MQUADS > 1 -->
+				<a href="{NEXT_MQUAD}" class="right-box {S_CONTENT_FLOW_END}">{L_NEXT}</a>
+				<a href="{PREV_MQUAD}" class="left-box {S_CONTENT_FLOW_BEGIN}">{L_PREVIOUS}</a>
+				<label>{MULTI_QUADRANT}</label>
+			<!-- ENDIF -->
+			<label><select id="mquad_id" name="mquad_id">{MQUAD_OPTIONS}</select></label>:
+			<label><select id="quad_id" name="quad_id">{QUAD_OPTIONS}</select></label>
+			<label><input type="submit" name="sort" value="{L_GO}" class="button2" /></label>
+		</fieldset>
+	</form>
+
+	<fieldset class="display-options">
+		<!-- IF NEXT_QUAD --><a href="{NEXT_QUAD}" class="right-box {S_CONTENT_FLOW_END}">{L_NEXT}</a><!-- ENDIF -->
+		<!-- IF PREV_QUAD --><a href="{PREV_QUAD}" class="left-box {S_CONTENT_FLOW_BEGIN}">{L_PREVIOUS}</a><!-- ENDIF -->
+		<!-- IF not S_IS_FAVO -->
+			<a href="{U_FAVO_QUAD}"><img src="{T_IMAGES_PATH}space/quick_add.png" alt="{L_GALAXY_FAVORITE_ADD}" title="{L_GALAXY_FAVORITE_ADD}" /></a>
+		<!-- ELSE -->
+			<a href="{U_FAVO_QUAD}"><img src="{T_IMAGES_PATH}space/quick_remove.png" alt="{L_GALAXY_FAVORITE_REMOVE}" title="{L_GALAXY_FAVORITE_REMOVE}" /></a>
+		<!-- ENDIF -->
+		{QUADRANT}
+		<!-- IF U_SPYQUAD -->
+			<a href="{U_SPYQUAD}"><img src="{T_IMAGES_PATH}space/spy.png" alt="{L_FLIGHT_STYLE_SPYQUAD}" title="{L_FLIGHT_STYLE_SPYQUAD}" /></a>
+		<!-- ELSE -->
+			<img src="{T_IMAGES_PATH}space/no_spy.png" alt="{L_FLIGHT_STYLE_SPYQUAD}" title="{L_FLIGHT_STYLE_SPYQUAD}" />
+		<!-- ENDIF -->
+		{QUADSPY_STATUS}
+	</fieldset>
+	<!-- ENDIF -->
+
+	<ul class="topiclist">
+		<li class="header">
+			<dl class="icon">
+				<dt>{L_PLANETS}</dt>
+				<dd class="lastpost"><span>{L_PLAYER}</span></dd>
+				<dd class="mark" style="width: 100px;"><span>{L_FLIGHT_STYLE}</span></dd>
+			</dl>
+		</li>
+	</ul>
+
+	<ul class="topiclist cplist">
+	<!-- BEGIN planetrow -->
+		<li class="row<!-- IF planetrow.S_ROW_COUNT is odd --> bg1<!-- ELSE --> bg2<!-- ENDIF -->">
+			<dl class="icon"<!-- IF planetrow.PLANET_IMG_SRC --> style="background-image: url({planetrow.PLANET_IMG_SRC}); background-repeat: no-repeat;"<!-- ENDIF -->>
+				<dt>
+					<strong>{planetrow.PLANET_ROW}<!-- IF S_GALAXY_OVERVIEW -->.<!-- ENDIF --></strong>
+					<!-- IF planetrow.S_IS_NOOB --><img src="{T_IMAGES_PATH}space/new.png" alt="{L_GALAXY_NOOB}" title="{L_GALAXY_NOOB_LONG}" />&nbsp;<!-- ENDIF -->
+					<!-- IF planetrow.S_IS_PROTECTED --><img src="{T_IMAGES_PATH}space/protected.png" alt="{L_GALAXY_PROTECTED}" title="{L_GALAXY_PROTECTED_LONG}" />&nbsp;<!-- ENDIF -->
+					<!-- IF planetrow.S_IS_VACATION --><img src="{T_IMAGES_PATH}space/vacation.png" alt="{L_GALAXY_VACATION}" title="{L_GALAXY_VACATION_LONG}" />&nbsp;<!-- ENDIF -->
+					<!-- IF planetrow.PLAYER --><strong>{planetrow.PLANET_NAME}</strong><!-- ELSE -->{planetrow.PLANET_NAME}<!-- ENDIF -->
+					<!-- IF not planetrow.S_IS_FAVO -->
+						<a href="{planetrow.U_FAVO_PLANET}"><img src="{T_IMAGES_PATH}space/quick_add.png" alt="{L_GALAXY_FAVORITE_ADD}" title="{L_GALAXY_FAVORITE_ADD}" /></a>
+					<!-- ELSE -->
+						<a href="{planetrow.U_FAVO_PLANET}"><img src="{T_IMAGES_PATH}space/quick_remove.png" alt="{L_GALAXY_FAVORITE_REMOVE}" title="{L_GALAXY_FAVORITE_REMOVE}" /></a>
+					<!-- ENDIF -->
+				</dt>
+				<dd class="lastpost"><span>
+					<!-- IF planetrow.PLAYER --><strong>{planetrow.USERNAME} <!-- IF planetrow.ALLY_TAG -->[{planetrow.ALLY_TAG}]<!-- ENDIF --></strong><!-- ELSE -->{planetrow.USERNAME}<!-- ENDIF -->
+					<!-- IF planetrow.U_PLAYER_PM --> <a href="{planetrow.U_PLAYER_PM}"><img src="{T_IMAGES_PATH}space/comment.png" alt="{L_PRIVATE_MESSAGE}" /></a><!-- ENDIF -->
+				</span></dd>
+				<dd class="mark" style="width: 100px;">
+					<!-- IF planetrow.U_SPY --><a href="{planetrow.U_SPY}"><img src="{T_IMAGES_PATH}space/spy.png" alt="{L_FLIGHT_STYLE_SPY}" title="{L_FLIGHT_STYLE_SPY}" /></a> <!-- ELSE --><img src="{T_IMAGES_PATH}space/no_spy.png" alt="{L_FLIGHT_STYLE_SPY}" title="{L_FLIGHT_STYLE_SPY}" /> <!-- ENDIF -->
+					<!-- IF planetrow.U_TRADE --><a href="{planetrow.U_TRADE}"><img src="{T_IMAGES_PATH}space/trade.png" alt="{L_FLIGHT_STYLE_TRADE}" title="{L_FLIGHT_STYLE_TRADE}" /></a> <!-- ELSE --><img src="{T_IMAGES_PATH}space/no_trade.png" alt="{L_FLIGHT_STYLE_TRADE}" title="{L_FLIGHT_STYLE_TRADE}" /> <!-- ENDIF -->
+					<!-- IF planetrow.U_ATTACK --><a href="{planetrow.U_ATTACK}"><img src="{T_IMAGES_PATH}space/attack.png" alt="{L_FLIGHT_STYLE_ATTACK}" title="{L_FLIGHT_STYLE_ATTACK}" /></a> <!-- ELSE --><img src="{T_IMAGES_PATH}space/no_attack.png" alt="{L_FLIGHT_STYLE_ATTACK}" title="{L_FLIGHT_STYLE_ATTACK}" /> <!-- ENDIF -->
+					<!-- IF planetrow.U_COLONISE --><a href="{planetrow.U_COLONISE}"><img src="{T_IMAGES_PATH}space/colonise.png" alt="{L_FLIGHT_STYLE_COLONISE}" title="{L_FLIGHT_STYLE_COLONISE}" /></a> <!-- ELSE --><img src="{T_IMAGES_PATH}space/no_colonise.png" alt="{L_FLIGHT_STYLE_COLONISE}" title="{L_FLIGHT_STYLE_COLONISE}" /> <!-- ENDIF -->
+					<!-- IF planetrow.U_DESTROY --><a href="{planetrow.U_DESTROY}"><img src="{T_IMAGES_PATH}space/destroy.png" alt="{L_FLIGHT_STYLE_DESTROY}" title="{L_FLIGHT_STYLE_DESTROY}" /></a> <!-- ELSE --><img src="{T_IMAGES_PATH}space/no_destroy.png" alt="{L_FLIGHT_STYLE_DESTROY}" title="{L_FLIGHT_STYLE_DESTROY}" /> <!-- ENDIF -->
+				</dd>
+			</dl>
+		</li>
+	<!-- END planetrow -->
+	</ul>
+
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+
+<!-- INCLUDE space_footer.html -->

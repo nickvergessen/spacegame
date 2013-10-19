@@ -1,0 +1,15 @@
+schilljs_spacegame_galaxy_controller:
+    pattern: /galaxy
+    defaults: { _controller: schilljs.spacegame.controller.galaxy:favorites }
+
+schilljs_spacegame_galaxy_favorites_controller:
+    pattern: /galaxy/favorites
+    defaults: { _controller: schilljs.spacegame.controller.galaxy:favorites }
+
+schilljs_spacegame_galaxy_map_controller:
+    pattern: /galaxy/map
+    defaults: { _controller: schilljs.spacegame.controller.galaxy:map, mquad: 0, quad: 0 }
+
+schilljs_spacegame_galaxy_map_quad_controller:
+    pattern: /galaxy/map/{mquad}/{quad}
+    defaults: { _controller: schilljs.spacegame.controller.galaxy:map }

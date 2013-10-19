@@ -45,6 +45,15 @@ class user
 	protected $home_planet;
 
 	/**
+	*
+	* @var array
+	*/
+	protected $current_navigation = array(
+		'mquad'	=> 0,
+		'quad'	=> 0,
+	);
+
+	/**
 	* Constructor
 	*
 	* @param \phpbb\db\driver\driver $db
@@ -75,6 +84,11 @@ class user
 		return (int) $this->data['ally_id'];
 	}
 
+	public function get_user_id()
+	{
+		return (int) $this->user_id;
+	}
+
 	public function get_cur_planet()
 	{
 		return (int) $this->data['user_cur_planet'];
@@ -98,17 +112,23 @@ class user
 		if (!in_array($this->cur_planet, $this->planets))
 		{
 			$this->set_cur_planet($this->home_planet);
-			$user_cur_quad = $this->planet_data[$this->cur_planet]['mquad_id'] . ':' . $this->planet_data[$this->cur_planet]['quad_id'];
 
 			$sql = 'UPDATE ' . $this->tables->get('users') . '
 				SET user_cur_planet = ' . $this->cur_planet . '
 				WHERE user_id = ' . $this->user_id;
 			$this->db->sql_query($sql);
 		}
-		$this->cur_mquad = (int) $this->planet_data[$this->cur_planet]['mquad_id'];
-		$this->cur_quad = (int) $this->planet_data[$this->cur_planet]['quad_id'];
+		$this->current_navigation = array(
+			'mquad'	=> (int) $this->planet_data[$this->cur_planet]['mquad_id'],
+			'quad'	=> (int) $this->planet_data[$this->cur_planet]['quad_id'],
+		);
 
 		$this->pdata = $this->planet_data[$this->cur_planet];
+	}
+
+	public function get_navigation()
+	{
+		return $this->current_navigation;
 	}
 
 	protected function get_user_planets($user_id)

@@ -18,12 +18,12 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, array(
-	'SPACE_STATISTICS_USERS'		=> 'User Statistics',
-	'SPACE_STATISTICS_ALLIANCES'	=> 'Alliance Statistics',
+	'HL_STATISTICS_USERS'		=> 'Player Statistics',
+	'HL_STATISTICS_ALLIANCES'	=> 'Alliance Statistics',
 
 	'ALLIANCE_NAME'			=> 'Alliance name',
 	'ALLIANCE_MEMBERS'		=> '#Members',
-	'USER_NAME'				=> 'User name',
+	'USER_NAME'				=> 'Player name',
 
 	'BATTLE_POINTS'			=> 'Battle',
 	'BUILDING_POINTS'		=> 'Building',

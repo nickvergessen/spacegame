@@ -54,7 +54,11 @@ class core
 		$this->space_user = $space_user->get_user_by_id($this->space_user_id);
 		$this->ally_id = $this->space_user->get_ally();
 		$this->cur_planet = $this->space_user->get_cur_planet();
+	}
 
+	public function get_user_id()
+	{
+		return (int) $this->space_user_id;
 	}
 
 	public function run_queue()
