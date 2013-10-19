@@ -44,13 +44,13 @@ class statistics extends \schilljs\spacegame\controller\base
 	* @param \phpbb\user	$user		User object
 	* @param \phpbb\controller\helper		$helper				Controller helper object
 	* @param \schilljs\spacegame\core		$space_core
-	* @param \schilljs\spacegame\user		$space_user
 	* @param \schilljs\spacegame\navigation		$navigation
+	* @param \schilljs\spacegame\user		$space_user
 	* @param string			$root_path	phpBB root path
 	* @param string			$php_ext	phpEx
 	* @param \schilljs\spacegame\tables		$tables
 	*/
-	public function __construct(\phpbb\db\driver\driver $db, \phpbb\config\config $config, \phpbb\template\template $template, \phpbb\user $user, \phpbb\controller\helper $helper, \schilljs\spacegame\core $space_core, \schilljs\spacegame\user $space_user, \schilljs\spacegame\navigation $navigation, $root_path, $php_ext, $tables)
+	public function __construct(\phpbb\db\driver\driver $db, \phpbb\config\config $config, \phpbb\template\template $template, \phpbb\user $user, \phpbb\controller\helper $helper, \schilljs\spacegame\core $space_core, \schilljs\spacegame\navigation $navigation, \schilljs\spacegame\user $space_user, $root_path, $php_ext, $tables)
 	{
 		$this->db = $db;
 		$this->config = $config;

@@ -1,9 +1,8 @@
 <?php
-
 /**
 *
-* @package NV Newspage Extension
-* @copyright (c) 2013 nickvergessen
+* @package SpaceGame Events
+* @copyright (c) 2013 schilljs
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
