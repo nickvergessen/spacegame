@@ -63,7 +63,7 @@ class initial extends \phpbb\db\migration\migration
 						'row_id'			=> array('UINT', 0),
 					),
 					'KEYS'		=> array(
-						'umq'		=> array('INDEX', array('user_id', 'mquad_id', 'quad_id')),
+						'umq'		=> array('UNIQUE', array('user_id', 'mquad_id', 'quad_id', 'row_id')),
 					),
 				),
 
@@ -171,7 +171,7 @@ class initial extends \phpbb\db\migration\migration
 						'permanent_spy'		=> array('BOOL', 0),
 					),
 					'KEYS'		=> array(
-						'umq'		=> array('INDEX', array('user_id', 'mquad_id', 'quad_id')),
+						'umq'		=> array('UNIQUE', array('user_id', 'mquad_id', 'quad_id', 'row_id')),
 						'amq'		=> array('INDEX', array('ally_id', 'mquad_id', 'quad_id')),
 					),
 				),

@@ -3,3 +3,12 @@
 .planet_green		{ background-image: url("./planets/green.png"); }
 .planet_grey		{ background-image: url("./planets/grey.png"); }
 .planet_orange		{ background-image: url("./planets/orange.png"); }
+
+.icon_favorite_add, .icon_favorite_remove {
+	width: 16px;
+	height: 16px;
+	overflow: hidden;
+	display: inline;
+}
+.icon_favorite_add { background-image: url("./quick_add.png"); }
+.icon_favorite_remove { background-image: url("./quick_remove.png"); }

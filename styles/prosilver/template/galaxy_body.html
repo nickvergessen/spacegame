@@ -76,6 +76,7 @@
 					<!-- IF planetrow.PLAYER --><strong>{planetrow.PLANET_NAME}</strong><!-- ELSE -->{planetrow.PLANET_NAME}<!-- ENDIF -->
 					<!-- IF not planetrow.S_FAVORITE_PLANET -->
 						<a href="{planetrow.U_FAVORITE_PLANET}"><img src="{T_IMAGES_PATH}space/quick_add.png" alt="{L_GALAXY_FAVORITE_ADD}" title="{L_GALAXY_FAVORITE_ADD}" /></a>
+						<div class="imageset icon_favorite_<!-- IF not planetrow.S_FAVORITE_PLANET -->add<!-- ELSE -->remove<!-- ENDIF -->"><a href="{planetrow.U_FAVORITE_PLANET}" title="{L_GALAXY_FAVORITE_ADD}" data-ajax="toggle_link" data-toggle-class="icon_favorite_<!-- IF planetrow.S_FAVORITE_PLANET -->add<!-- ELSE -->remove<!-- ENDIF -->" data-toggle-text="{planetrow.L_FAVORITE_PLANET_TOGGLE}" data-toggle-url="{planetrow.U_FAVORITE_PLANET_TOGGLE}">{planetrow.L_FAVORITE_PLANET}</a></div>
 					<!-- ELSE -->
 						<a href="{planetrow.U_FAVORITE_PLANET}"><img src="{T_IMAGES_PATH}space/quick_remove.png" alt="{L_GALAXY_FAVORITE_REMOVE}" title="{L_GALAXY_FAVORITE_REMOVE}" /></a>
 					<!-- ENDIF -->

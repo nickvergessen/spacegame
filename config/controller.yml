@@ -11,12 +11,15 @@ services:
     schilljs.spacegame.controller.galaxy:
         class: schilljs\spacegame\controller\galaxy
         arguments:
+            - @dbal.conn
             - @controller.helper
+            - @request
             - @template
             - @user
             - @schilljs.spacegame.core
             - @schilljs.spacegame.favorites
             - @schilljs.spacegame.navigation
+            - @schilljs.spacegame.tables
             - @schilljs.spacegame.user
 
     schilljs.spacegame.controller.general:

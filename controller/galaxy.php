@@ -17,25 +17,89 @@ class galaxy extends \schilljs\spacegame\controller\base
 	/**
 	* Constructor
 	*
+	* @param \phpbb\db\driver\driver		$db
 	* @param \phpbb\controller\helper		$helper
-	* @param \phpbb\template\template				$template
+	* @param \phpbb\request\request			$request
+	* @param \phpbb\template\template		$template
 	* @param \phpbb\user					$user
 	* @param \schilljs\spacegame\core		$space_core
 	* @param \schilljs\spacegame\favorites	$favorites
 	* @param \schilljs\spacegame\navigation	$navigation
+	* @param \schilljs\spacegame\tables		$tables
 	* @param \schilljs\spacegame\user		$space_user
 	*/
-	public function __construct(\phpbb\controller\helper $helper, \phpbb\template\template $template, \phpbb\user $user, \schilljs\spacegame\core $space_core, \schilljs\spacegame\favorites $favorites, \schilljs\spacegame\navigation $navigation, \schilljs\spacegame\user $space_user)
+	public function __construct(\phpbb\db\driver\driver $db, \phpbb\controller\helper $helper, \phpbb\request\request $request, \phpbb\template\template $template, \phpbb\user $user, \schilljs\spacegame\core $space_core, \schilljs\spacegame\favorites $favorites, \schilljs\spacegame\navigation $navigation, \schilljs\spacegame\tables $tables, \schilljs\spacegame\user $space_user)
 	{
+		$this->db = $db;
 		$this->helper = $helper;
+		$this->request = $request;
 		$this->template = $template;
 		$this->user = $user;
 		$this->space_core = $space_core;
 		$this->favorites = $favorites;
 		$this->navigation = $navigation;
+		$this->tables = $tables;
 		$this->space_user = $space_user;
 
 		$this->user->add_lang_ext('schilljs/spacegame', 'galaxy');
+	}
+
+	/**
+	* Add a planet to the user's favorites
+	*
+	* @return Symfony\Component\HttpFoundation\Response A Symfony Response object
+	*/
+	public function add($mquad, $quad, $planet)
+	{
+		$this->init();
+
+		if (check_link_hash($this->request->variable('hash', ''), 'add/' . $mquad . '/' . $quad . '/' . $planet))
+		{
+			$success = $this->favorites->add($mquad, $quad, $planet);
+
+			$message = $success ? $this->user->lang['GALAXY_FAVORITE_ADDED'] : $this->user->lang['GALAXY_ALREADY_FAVORITE'];
+			if (!$this->request->is_ajax())
+			{
+				$message .= '<br /><br />' . $this->user->lang('RETURN_MAP', '<a href="' . $this->helper->url('galaxy/map/' . $mquad . '/' . $quad) . '">', '</a>');
+			}
+
+			trigger_error($message);
+		}
+		else
+		{
+			trigger_error('INVALID_REQUEST');
+		}
+
+		return $this->helper->render('galaxy_body.html', $this->user->lang('HL_GALAXY_FAVORITES'));
+	}
+
+	/**
+	* Remove a planet from the user's favorites
+	*
+	* @return Symfony\Component\HttpFoundation\Response A Symfony Response object
+	*/
+	public function remove($mquad, $quad, $planet)
+	{
+		$this->init();
+
+		if (check_link_hash($this->request->variable('hash', ''), 'remove/' . $mquad . '/' . $quad . '/' . $planet))
+		{
+			$success = $this->favorites->remove($mquad, $quad, $planet);
+
+			$message = $success ? $this->user->lang['GALAXY_FAVORITE_REMOVED'] : $this->user->lang['GALAXY_NOT_FAVORITE'];
+			if (!$this->request->is_ajax())
+			{
+				$message .= '<br /><br />' . $this->user->lang('RETURN_MAP', '<a href="' . $this->helper->url('galaxy/map/' . $mquad . '/' . $quad) . '">', '</a>');
+			}
+
+			trigger_error($message);
+		}
+		else
+		{
+			trigger_error('INVALID_REQUEST');
+		}
+
+		return $this->helper->render('galaxy_body.html', $this->user->lang('HL_GALAXY_FAVORITES'));
 	}
 
 	/**
@@ -96,7 +160,13 @@ class galaxy extends \schilljs\spacegame\controller\base
 
 	public function display_favorite_quadrants()
 	{
-		foreach ($this->favorites->get_quadrants() as $mquadrant => $quadrants)
+		$favorite_quadrants = $this->favorites->get_quadrants();
+		if (empty($favorite_quadrants))
+		{
+			return;
+		}
+
+		foreach ($favorite_quadrants as $mquadrant => $quadrants)
 		{
 			foreach ($quadrants as $quadrant)
 			{
@@ -134,11 +204,18 @@ class galaxy extends \schilljs\spacegame\controller\base
 					}
 
 					$s_favorite_planet = isset($this->favorite_planets[$mquadrant][$quadrant]) &&  in_array($planet, $this->favorite_planets[$mquadrant][$quadrant]);
+					$u_remove_favorite_planet = $this->helper->url('galaxy/favorites/remove/' . $mquadrant . '/' . $quadrant . '/' . $planet, 'hash=' . generate_link_hash('remove/' . $mquadrant . '/' . $quadrant . '/' . $planet));
+					$u_add_favorite_planet = $this->helper->url('galaxy/favorites/add/' . $mquadrant . '/' . $quadrant . '/' . $planet, 'hash=' . generate_link_hash('add/' . $mquadrant . '/' . $quadrant . '/' . $planet));
+
+
 					$this->template->assign_block_vars('planetrow', array(
 						'PLANET_NAME'		=> $mquadrant . ':' . $quadrant . ':' . $planet,
 						'PLANET_IMAGE'		=> 'planet_' . $planet_image,
-						'S_FAVORITE_PLANET'		=> $s_favorite_planet,
-						'U_FAVORITE_PLANET'		=> ($s_favorite_planet) ? $this->helper->url('galaxy/favorites/remove/' . $planet) : $this->helper->url('galaxy/favorites/add/' . $planet),
+						'S_FAVORITE_PLANET'			=> $s_favorite_planet,
+						'U_FAVORITE_PLANET'			=> ($s_favorite_planet) ? $u_remove_favorite_planet : $u_add_favorite_planet,
+						'U_FAVORITE_PLANET_TOGGLE'	=> (!$s_favorite_planet) ? $u_remove_favorite_planet : $u_add_favorite_planet,
+						'L_FAVORITE_PLANET'			=> ($s_favorite_planet) ? $this->user->lang['GALAXY_FAVORITE_REMOVE'] : $this->user->lang['GALAXY_FAVORITE_ADD'],
+						'L_FAVORITE_PLANET_TOGGLE'	=> (!$s_favorite_planet) ? $this->user->lang['GALAXY_FAVORITE_REMOVE'] : $this->user->lang['GALAXY_FAVORITE_ADD'],
 					));
 				}
 			}
