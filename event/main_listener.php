@@ -28,7 +28,6 @@ class main_listener implements \Symfony\Component\EventDispatcher\EventSubscribe
 		return array(
 			'core.user_setup'						=> 'load_language_on_setup',
 			'core.page_header'						=> 'add_page_header_link',
-			#'core.viewonline_overwrite_location'	=> 'add_newspage_viewonline',
 		);
 	}
 
@@ -49,19 +48,5 @@ class main_listener implements \Symfony\Component\EventDispatcher\EventSubscribe
 		$template->assign_vars(array(
 			'U_SPACEGAME'	=> $phpbb_container->get('controller.helper')->url('general'),
 		));
-	}
-
-	public function add_newspage_viewonline($event)
-	{
-		global $user, $phpbb_root_path, $phpEx;
-
-		if ($event['on_page'][1] == 'app')
-		{
-			if (utf8_strpos($event['row']['session_page'], 'controller=news') !== false)
-			{
-				$event['location_url'] = append_sid($phpbb_root_path . 'app.' . $phpEx, 'controller=news');
-				$event['location'] = $user->lang['NEWS'];
-			}
-		}
 	}
 }

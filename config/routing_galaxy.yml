@@ -1,13 +1,9 @@
-schilljs_spacegame_galaxy_controller:
-    pattern: /galaxy
-    defaults: { _controller: schilljs.spacegame.controller.galaxy:favorites }
-
 schilljs_spacegame_galaxy_favorites_controller:
-    pattern: /galaxy/favorites
+    pattern: /favorites
     defaults: { _controller: schilljs.spacegame.controller.galaxy:favorites }
 
 schilljs_spacegame_galaxy_favorites_add_controller:
-    pattern: /galaxy/favorites/add/{mquad}/{quad}/{planet}
+    pattern: /favorites/add/{mquad}/{quad}/{planet}
     defaults: { _controller: schilljs.spacegame.controller.galaxy:add }
     requirements:
         mquad:   \d+
@@ -15,7 +11,7 @@ schilljs_spacegame_galaxy_favorites_add_controller:
         planet:  \d+
 
 schilljs_spacegame_galaxy_favorites_remove_controller:
-    pattern: /galaxy/favorites/remove/{mquad}/{quad}/{planet}
+    pattern: /favorites/remove/{mquad}/{quad}/{planet}
     defaults: { _controller: schilljs.spacegame.controller.galaxy:remove }
     requirements:
         mquad:   \d+
@@ -23,11 +19,11 @@ schilljs_spacegame_galaxy_favorites_remove_controller:
         planet:  \d+
 
 schilljs_spacegame_galaxy_map_controller:
-    pattern: /galaxy/map
+    pattern: /map
     defaults: { _controller: schilljs.spacegame.controller.galaxy:map, mquad: 0, quad: 0 }
 
 schilljs_spacegame_galaxy_map_quad_controller:
-    pattern: /galaxy/map/{mquad}/{quad}
+    pattern: /map/{mquad}/{quad}
     defaults: { _controller: schilljs.spacegame.controller.galaxy:map }
     requirements:
         mquad:   \d+

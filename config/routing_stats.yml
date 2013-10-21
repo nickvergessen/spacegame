@@ -1,23 +1,19 @@
-schilljs_spacegame_stats_controller:
-    pattern: /stats
-    defaults: { _controller: schilljs.spacegame.controller.statistics:users, sort_key: 'total', sort_dir: 'desc' }
-
 schilljs_spacegame_stats_users_controller:
-    pattern: /stats/users
+    pattern: /users
     defaults: { _controller: schilljs.spacegame.controller.statistics:users, sort_key: 'total', sort_dir: 'desc' }
 
 schilljs_spacegame_stats_users_sorted_controller:
-    pattern: /stats/users/{sort_key}/{sort_dir}
+    pattern: /users/{sort_key}/{sort_dir}
     defaults: { _controller: schilljs.spacegame.controller.statistics:users }
 
 schilljs_spacegame_stats_alliances_controller:
-    pattern: /stats/alliances
+    pattern: /alliances
     defaults: { _controller: schilljs.spacegame.controller.statistics:alliances, sort_key: 'total', sort_dir: 'desc', mode: '' }
 
 schilljs_spacegame_stats_alliances_sorted_controller:
-    pattern: /stats/alliances/{sort_key}/{sort_dir}
+    pattern: /alliances/{sort_key}/{sort_dir}
     defaults: { _controller: schilljs.spacegame.controller.statistics:alliances, mode: '' }
 
 schilljs_spacegame_stats_alliances_sorted_pm_controller:
-    pattern: /stats/alliances/{sort_key}/{sort_dir}/members
+    pattern: /alliances/{sort_key}/{sort_dir}/members
     defaults: { _controller: schilljs.spacegame.controller.statistics:alliances, mode: 'members' }

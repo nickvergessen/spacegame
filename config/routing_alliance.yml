@@ -1,23 +1,19 @@
-schilljs_spacegame_alliance_controller:
-    pattern: /alliance
-    defaults: { _controller: schilljs.spacegame.controller.alliance:nyf }
-
 schilljs_spacegame_alliance_overview_controller:
-    pattern: /alliance/overview
+    pattern: /overview
     defaults: { _controller: schilljs.spacegame.controller.alliance:nyf }
 
 schilljs_spacegame_alliance_found_controller:
-    pattern: /alliance/found
+    pattern: /found
     defaults: { _controller: schilljs.spacegame.controller.alliance:nyf }
 
 schilljs_spacegame_alliance_manage_controller:
-    pattern: /alliance/manage
+    pattern: /manage
     defaults: { _controller: schilljs.spacegame.controller.alliance:nyf }
 
 schilljs_spacegame_alliance_users_controller:
-    pattern: /alliance/users
+    pattern: /users
     defaults: { _controller: schilljs.spacegame.controller.alliance:nyf }
 
 schilljs_spacegame_alliance_forums_controller:
-    pattern: /alliance/forums
+    pattern: /forums
     defaults: { _controller: schilljs.spacegame.controller.alliance:nyf }

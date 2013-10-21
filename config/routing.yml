@@ -9,3 +9,35 @@ schilljs_spacegame_general_planets_controller:
 schilljs_spacegame_general_settings_controller:
     pattern: /general/settings
     defaults: { _controller: schilljs.spacegame.controller.general:nyf }
+
+schilljs_spacegame_alliance_controller:
+    resource: "routing_alliance.yml"
+    prefix:   /alliance
+
+schilljs_spacegame_alliance_tab_controller:
+    pattern:  /alliance
+    defaults: { _controller: schilljs.spacegame.controller.alliance:nyf }
+
+schilljs_spacegame_galaxy_controller:
+    resource: "routing_galaxy.yml"
+    prefix:   /galaxy
+
+schilljs_spacegame_galaxy_tab_controller:
+    pattern:  /galaxy
+    defaults: { _controller: schilljs.spacegame.controller.galaxy:nyf }
+
+schilljs_spacegame_planet_controller:
+    resource: "routing_planet.yml"
+    prefix:   /planet
+
+schilljs_spacegame_planet_tab_controller:
+    pattern:  /planet
+    defaults: { _controller: schilljs.spacegame.controller.planet:nyf }
+
+schilljs_spacegame_stats_controller:
+    resource: "routing_stats.yml"
+    prefix:   /stats
+
+schilljs_spacegame_stats_tab_controller:
+    pattern:  /stats
+    defaults: { _controller: schilljs.spacegame.controller.statistics:nyf }
