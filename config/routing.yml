@@ -24,7 +24,7 @@ schilljs_spacegame_galaxy_controller:
 
 schilljs_spacegame_galaxy_tab_controller:
     pattern:  /galaxy
-    defaults: { _controller: schilljs.spacegame.controller.galaxy:nyf }
+    defaults: { _controller: schilljs.spacegame.controller.galaxy:favorites }
 
 schilljs_spacegame_planet_controller:
     resource: "routing_planet.yml"
