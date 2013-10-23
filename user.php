@@ -89,6 +89,16 @@ class user
 		return (int) $this->user_id;
 	}
 
+	public function get($key)
+	{
+		if (!isset($this->data[$key]))
+		{
+			throw new \InvalidArgumentException('Key ' . $key . ' not found in user array');
+		}
+
+		return $this->data[$key];
+	}
+
 	public function get_cur_planet()
 	{
 		return (int) $this->data['user_cur_planet'];

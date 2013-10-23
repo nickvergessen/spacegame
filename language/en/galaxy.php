@@ -18,8 +18,8 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, array(
-	'HL_GALAXY_FAVORITES'	=> 'Favorite Planets',
-	'HL_GALAXY_MAP'			=> 'Map',
+	'HL_GALAXY_FAVORITES'	=> 'Galaxy &raquo; Favorites',
+	'HL_GALAXY_MAP'			=> 'Galaxy &raquo; Map',
 
 	'GALAXY_ALREADY_FAVORITE'	=> 'The planet is already in your favorites.',
 	'GALAXY_FAVORITES'			=> 'With the favorites you can have a quick jump to the right place in the map.',

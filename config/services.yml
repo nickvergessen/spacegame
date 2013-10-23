@@ -43,3 +43,11 @@ services:
         arguments:
             - @dbal.conn
             - @schilljs.spacegame.tables
+
+    schilljs.spacegame.user_helper:
+        class: schilljs\spacegame\user_helper
+        arguments:
+            - @dbal.conn
+            - %core.root_path%
+            - %core.php_ext%
+            - @schilljs.spacegame.tables

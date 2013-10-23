@@ -27,12 +27,6 @@ class statistics extends \schilljs\spacegame\controller\base
 	/* @var \phpbb\controller\helper */
 	protected $helper;
 
-	/* @var string phpBB root path */
-	protected $root_path;
-
-	/* @var string phpEx */
-	protected $php_ext;
-
 	protected $sort_keys = array('building', 'technology', 'battle', 'total');
 
 	/**
@@ -46,19 +40,15 @@ class statistics extends \schilljs\spacegame\controller\base
 	* @param \schilljs\spacegame\core		$space_core
 	* @param \schilljs\spacegame\navigation		$navigation
 	* @param \schilljs\spacegame\user		$space_user
-	* @param string			$root_path	phpBB root path
-	* @param string			$php_ext	phpEx
 	* @param \schilljs\spacegame\tables		$tables
 	*/
-	public function __construct(\phpbb\db\driver\driver $db, \phpbb\config\config $config, \phpbb\template\template $template, \phpbb\user $user, \phpbb\controller\helper $helper, \schilljs\spacegame\core $space_core, \schilljs\spacegame\navigation $navigation, \schilljs\spacegame\user $space_user, $root_path, $php_ext, $tables)
+	public function __construct(\phpbb\db\driver\driver $db, \phpbb\config\config $config, \phpbb\template\template $template, \phpbb\user $user, \phpbb\controller\helper $helper, \schilljs\spacegame\core $space_core, \schilljs\spacegame\navigation $navigation, \schilljs\spacegame\user $space_user, \schilljs\spacegame\tables $tables)
 	{
 		$this->db = $db;
 		$this->config = $config;
 		$this->template = $template;
 		$this->user = $user;
 		$this->helper = $helper;
-		$this->root_path = $root_path;
-		$this->php_ext = $php_ext;
 
 		$this->tables = $tables;
 		$this->space_core = $space_core;

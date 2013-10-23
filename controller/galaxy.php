@@ -69,8 +69,6 @@ class galaxy extends \schilljs\spacegame\controller\base
 		{
 			trigger_error('INVALID_REQUEST');
 		}
-
-		return $this->helper->render('galaxy_body.html', $this->user->lang('HL_GALAXY_FAVORITES'));
 	}
 
 	/**
@@ -98,8 +96,6 @@ class galaxy extends \schilljs\spacegame\controller\base
 		{
 			trigger_error('INVALID_REQUEST');
 		}
-
-		return $this->helper->render('galaxy_body.html', $this->user->lang('HL_GALAXY_FAVORITES'));
 	}
 
 	/**

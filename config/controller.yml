@@ -2,11 +2,18 @@ services:
     schilljs.spacegame.controller.alliance:
         class: schilljs\spacegame\controller\alliance
         arguments:
+            - @dbal.conn
             - @controller.helper
+            - @request
+            - @template
             - @user
+            - %core.root_path%
+            - %core.php_ext%
             - @schilljs.spacegame.core
             - @schilljs.spacegame.navigation
+            - @schilljs.spacegame.tables
             - @schilljs.spacegame.user
+            - @schilljs.spacegame.user_helper
 
     schilljs.spacegame.controller.galaxy:
         class: schilljs\spacegame\controller\galaxy
@@ -51,6 +58,4 @@ services:
             - @schilljs.spacegame.core
             - @schilljs.spacegame.navigation
             - @schilljs.spacegame.user
-            - %core.root_path%
-            - %core.php_ext%
             - @schilljs.spacegame.tables
